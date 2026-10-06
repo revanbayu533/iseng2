@@ -100,7 +100,7 @@ const romanticScale = [
 ];
 
 let noteIndex = 0;
-const bgAudio = document.getElementById('bg-music') || new Audio(encodeURI('Merry Christmas, Please Dont Call.mp3'));
+const bgAudio = document.getElementById('bg-music') || new Audio(encodeURI('JELITA.mp4'));
 const musicPill = document.getElementById('music-pill');
 const discVinyl = document.getElementById('disc-vinyl');
 const soundWave = document.getElementById('sound-wave');
@@ -122,7 +122,7 @@ function startMusic() {
   initAudio();
   isMusicPlaying = true;
   updateMusicUI(true);
-  showToast('Memutar: Merry Christmas, Please Dont Call 🎵');
+  showToast('Memutar: Jelita 🎵');
 
   // Try playing the custom MP3 song
   const playPromise = bgAudio.play();
