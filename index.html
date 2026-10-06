@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Surat Permintaan Maaf Spesial 💌</title>
+  <meta name="description" content="Surat permintaan maaf yang tulus dan interaktif untuk orang tersayang.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient light blobs -->
+  <div class="ambient-glow ambient-1"></div>
+  <div class="ambient-glow ambient-2"></div>
+
+  <!-- Dynamic particle & confetti canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Audio element explicitly loaded -->
+  <audio id="bg-music" src="Merry Christmas, Please Dont Call.mp3" preload="auto" loop></audio>
+
+  <!-- Top Controls & Mini Music Player Widget -->
+  <div class="top-controls">
+    <div class="music-pill" id="music-pill" title="Putar / Jeda Lagu">
+      <div class="disc-vinyl" id="disc-vinyl">
+        <span>💿</span>
+      </div>
+      <div class="music-info">
+        <span class="music-title">Merry Christmas, Please Dont Call</span>
+        <span class="music-status" id="music-status">Ketuk untuk putar musik 🎵</span>
+      </div>
+      <div class="sound-wave" id="sound-wave">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+        <span class="bar bar4"></span>
+      </div>
+    </div>
+
+    <button class="icon-btn" id="theme-btn" title="Ganti Tema" aria-label="Theme Toggle">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+
+  <div class="app-wrapper">
+
+    <!-- STEP 1: INTERACTIVE ENVELOPE -->
+    <div class="envelope-box" id="envelope-box">
+      <div class="envelope-card">
+        <div class="envelope-flap" id="envelope-flap"></div>
+        <div class="envelope-wax" id="wax-seal" title="Klik untuk membuka surat">
+          💌
+        </div>
+      </div>
+      <div class="envelope-hint">
+        <span>Ada surat penting untukmu, sentuh untuk buka</span> ✨
+      </div>
+    </div>
+
+    <!-- STEP 2: MAIN LETTER CARD -->
+    <div class="card" id="main-card">
+      <div id="content-screen">
+        <div class="emoji-container" id="character-container" title="Klik untuk ganti karakter stiker!">
+          <div class="emoji-bg"></div>
+          <div class="character-wrapper" id="main-character-wrapper">
+            <!-- Animated sticker rendered here -->
+          </div>
+          <div class="character-edit-badge" title="Ganti Karakter">✏️</div>
+        </div>
+
+        <h1 id="title">Maafin Aku</h1>
+        <p class="subtitle" id="subtitle">Pesan tulus langsung dari lubuk hatiku</p>
+
+        <div class="letter-paper" id="letter-click-area">
+          <div id="msg" class="cursor"></div>
+          <div class="tap-speed-hint" id="speed-hint">Ketuk di sini untuk percepat teks ⏩</div>
+        </div>
+
+        <!-- 3 Poin Janji Tulus -->
+        <div class="reasons-box" id="reasons-box" style="display: none;">
+          <div class="reason-item">
+            <span class="reason-icon">💬</span>
+            <span>Kalau kamu chat, sesibuk apa pun aku janji akan selalu jawab.</span>
+          </div>
+          <div class="reason-item">
+            <span class="reason-icon">🤍</span>
+            <span>Aku paham posisi sulit yang harus kamu hadapi saat ini.</span>
+          </div>
+          <div class="reason-item">
+            <span class="reason-icon">🕊️</span>
+            <span>Aku sangat menghargai keputusan dan batasan yang kamu ambil.</span>
+          </div>
+        </div>
+
+        <!-- Galeri Foto Polaroid Kenangan -->
+        <div class="polaroid-section" id="polaroid-section" style="display: none;">
+          <div class="polaroid-header">
+            <div class="polaroid-title">
+              <span>📸 Foto Kenangan ✨</span>
+            </div>
+            <button type="button" class="polaroid-upload-all-btn" id="upload-polaroid-btn">
+              <span>+ Unggah Foto</span>
+            </button>
+          </div>
+          <p class="polaroid-sub">Sentuh foto untuk melihat lebih jelas ✨</p>
+
+          <div class="polaroid-track" id="polaroid-track">
+            <!-- Polaroid Item 1 -->
+            <div class="polaroid-card tilt-left" data-index="0">
+              <div class="washi-tape"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="WhatsApp Image 2026-07-30 at 14.21.23.jpeg" alt="Kenangan 1" class="polaroid-img" id="polaroid-img-0">
+                <div class="polaroid-overlay">
+                  <span>📷 Ganti Foto</span>
+                </div>
+              </div>
+              <div class="polaroid-caption" id="polaroid-cap-0" contenteditable="true" spellcheck="false">mungkin ini foto yg aku punya</div>
+            </div>
+
+            <!-- Polaroid Item 2 -->
+            <div class="polaroid-card tilt-straight" data-index="1">
+              <div class="washi-tape washi-tape-center"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="WhatsApp Image 2026-07-30 at 14.21.23 (1).jpeg" alt="Kenangan 2" class="polaroid-img" id="polaroid-img-1">
+                <div class="polaroid-overlay">
+                  <span>📷 Ganti Foto</span>
+                </div>
+              </div>
+              <div class="polaroid-caption" id="polaroid-cap-1" contenteditable="true" spellcheck="false">mungkin ini foto yg aku punya</div>
+            </div>
+
+            <!-- Polaroid Item 3 -->
+            <div class="polaroid-card tilt-right" data-index="2">
+              <div class="washi-tape"></div>
+              <div class="polaroid-img-wrapper">
+                <img src="WhatsApp Image 2026-07-30 at 14.21.23 (2).jpeg" alt="Kenangan 3" class="polaroid-img" id="polaroid-img-2">
+                <div class="polaroid-overlay">
+                  <span>📷 Ganti Foto</span>
+                </div>
+              </div>
+              <div class="polaroid-caption" id="polaroid-cap-2" contenteditable="true" spellcheck="false">mungkin ini foto yg aku punya</div>
+            </div>
+          </div>
+          <input type="file" id="polaroid-file-input" accept="image/*" style="display: none;">
+        </div>
+
+        <!-- Tombol Pilihan -->
+        <div class="ask" id="ask">
+          <p class="ask-question">Maukah kamu memaafkan aku? 🥺</p>
+          <div class="btns-wrapper">
+            <button class="btn" id="yes">
+              <span>Iya, aku maafin</span> 💖
+            </button>
+            <button class="btn" id="no">
+              <span>Tidak</span>
+            </button>
+            <div class="dodge-tooltip" id="dodge-tooltip">Tombolnya kabur! 😜</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: CELEBRATION / DITERIMA -->
+      <div class="final" id="final">
+        <div class="emoji-container">
+          <div class="emoji-bg"></div>
+          <div class="character-wrapper" id="final-character-wrapper">
+            <!-- Happy animated sticker rendered here -->
+          </div>
+        </div>
+
+        <span class="celebration-badge">Status: Berhasil Dimaafkan 🎉</span>
+        <h2>Terima Kasih Banyak!</h2>
+        <p id="thanks" style="color:var(--text-muted); line-height: 1.7; margin-bottom: 8px;"></p>
+
+        <!-- Voucher Damai Hadiah -->
+        <div class="voucher-card">
+          <div class="voucher-title">🎟️ Kupon Perdamaian Spesial</div>
+          <div class="voucher-perk" id="voucher-text">Traktir Makan & Boba Bebas Pilih</div>
+          <div class="voucher-terms">*Berlaku selamanya tanpa kadaluarsa + 100x peluk hangat</div>
+        </div>
+
+        <div class="share-btns">
+          <a href="#" id="wa-btn" class="wa-share-btn" target="_blank" rel="noopener">
+            <span>Kabari via WhatsApp</span> 💬
+          </a>
+          <button class="reset-btn" id="reset-btn">Buka kembali suratnya</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customize Link (Hanya aktif untuk pengirim) -->
+    <div class="customize-bar" id="customize-bar">
+      <span>Ingin kirim ini ke pasanganmu?</span>
+      <span class="edit-link" id="customize-trigger">Kustomisasi Nama & Pesan ✍️</span>
+    </div>
+
+  </div>
+
+  <!-- Modal Pilihan Karakter / Stiker Animasi -->
+  <div class="modal-overlay" id="sticker-modal">
+    <div class="modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0;">Pilih Karakter Stiker 🐾</h3>
+        <button type="button" class="btn-cancel" id="sticker-modal-close-x" style="padding:4px 10px; font-size:1.1rem; border-radius:50%;">✕</button>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
+        Pilih animasi favorit Jelita atau upload stiker/GIF sendiri:
+      </p>
+
+      <div class="sticker-grid" id="sticker-grid">
+        <button type="button" class="sticker-tile active" data-character="cat">
+          <div class="sticker-tile-art" id="tile-cat"></div>
+          <span>Kucing Mochi 🐱</span>
+        </button>
+
+        <button type="button" class="sticker-tile" data-character="panda">
+          <div class="sticker-tile-art" id="tile-panda"></div>
+          <span>Panda Sedih 🐼</span>
+        </button>
+
+        <button type="button" class="sticker-tile" data-character="bear">
+          <div class="sticker-tile-art" id="tile-bear"></div>
+          <span>Beruang Bucin 🐻</span>
+        </button>
+
+        <button type="button" class="sticker-tile" data-character="emoji">
+          <div class="sticker-tile-art" style="font-size:32px; display:flex; align-items:center; justify-content:center;">🥺</div>
+          <span>Emoji Klasik 🥺</span>
+        </button>
+      </div>
+
+      <div class="upload-sticker-box">
+        <button type="button" class="upload-sticker-btn" id="upload-sticker-btn">
+          <span>📤 Unggah Foto / GIF Stiker Sendiri</span>
+        </button>
+        <input type="file" id="custom-sticker-input" accept="image/*" style="display: none;">
+      </div>
+
+      <div class="modal-actions" style="margin-top:14px;">
+        <button class="btn-save" id="sticker-modal-apply" style="width:100%;">Terapkan Karakter ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Kustomisasi Nama -->
+  <div class="modal-overlay" id="custom-modal">
+    <div class="modal-content">
+      <h3>Kustomisasi Surat 💌</h3>
+      <div class="input-group">
+        <label for="input-untuk">Untuk (Nama Pasangan / Sahabat):</label>
+        <input type="text" id="input-untuk" placeholder="Contoh: Sayang / Dinda">
+      </div>
+      <div class="input-group">
+        <label for="input-dari">Dari (Namamu):</label>
+        <input type="text" id="input-dari" placeholder="Contoh: Bayu">
+      </div>
+      <div class="input-group">
+        <label for="input-hadiah">Janji / Hadiah Perdamaian:</label>
+        <input type="text" id="input-hadiah" placeholder="Contoh: Traktir Seblak & Es Krim">
+      </div>
+      <div class="input-group" style="margin-top: 10px;">
+        <label for="input-share-link">Tautan Khusus Jelita (Read-Only & Terkunci):</label>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input type="text" id="input-share-link" readonly style="background: var(--bg-card); cursor: text; font-size: 0.82rem; font-family: monospace;">
+          <button type="button" class="btn-save" id="btn-copy-direct" style="white-space: nowrap; padding: 10px 14px; font-size: 0.82rem;">Salin Link</button>
+        </div>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin: 6px 0 10px;">
+        🔒 Link ini memiliki parameter <code>?lock=1</code> sehingga penerima tidak bisa mengubah nama, foto, atau teks.
+      </p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="modal-cancel">Tutup</button>
+        <button class="btn-save" id="modal-save">Simpan & Salin Link 🔒</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- External Script -->
+  <script src="script.js"></script>
+</body>
+</html>
