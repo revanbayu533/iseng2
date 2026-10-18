@@ -291,7 +291,7 @@ function buildLetterText() {
 
 Maaf ya kalau sekarang ada sikap, perkataan, atau caraku merespons yang kurang berkenan di hatimu sampai bikin kamu terasa menjauh dari aku.
 
-Kalau kuingat lagi ke belakang, pasti kamu selalu jadi prioritasku. Dulu kamu yang selalu ada dan paling sering nyariin pas aku lagi sibuk-sibuknya dengan urusanku sendiri. Dan aku pengen kamu tahu, sekarang pun kalau kamu chat, sesibuk apa pun keadaanku atau sesibuk apa pun kamu, aku akan selalu ada dan selalu jawab chat dari kamu.
+Aku sadar banyak hal di masa lalu yang bikin kamu kecewa. Tapi satu hal yang pasti, pintu dan waktuku sekarang akan selalu terbuka buat kamu kapan pun kamu butuh atau sekadar pengen cerita.
 
 Sekarang, di saat waktuku sudah lebih luang dan aku ingin memperbaiki semuanya, aku paham kenapa situasinya justru berbalik. Aku sangat mengerti alasan kenapa kamu perlahan menjauh, bersikap dingin, atau bahkan mungkin terlihat seperti membenciku—terutama setelah ibumu tahu tentang hubungan kita. Aku tahu kamu pasti berada di posisi yang sangat sulit, serba salah, dan penuh tekanan di hadapan orang tuamu.
 
