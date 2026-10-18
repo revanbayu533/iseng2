@@ -289,7 +289,7 @@ envelopeBox.addEventListener('click', openEnvelope);
 function buildLetterText() {
   return `Hai ${untuk},
 
-Maaf ya kalau sekarang ada sikap, perkataan, atau caraku merespons yang kurang berkenan di hatimu sampai bikin kamu terasa menjauh dari aku.
+Maaf ya kalau dulu ada sikap, perkataan, atau caraku merespons yang kurang berkenan di hatimu sampai bikin kamu terasa menjauh dari aku.
 
 Aku sadar banyak hal di masa lalu yang bikin kamu kecewa. Tapi satu hal yang pasti, pintu dan waktuku sekarang akan selalu terbuka buat kamu kapan pun kamu butuh atau sekadar pengen cerita.
 
