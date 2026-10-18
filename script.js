@@ -570,6 +570,29 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 2400);
 }
 
+// Cegah modal tertutup otomatis saat user sedang blok/seleksi teks (drag mouse)
+function bindBackdropClose(modalElement) {
+  if (!modalElement) return;
+  let isBackdropMouseDown = false;
+
+  modalElement.addEventListener('mousedown', (e) => {
+    isBackdropMouseDown = (e.target === modalElement);
+  });
+
+  modalElement.addEventListener('mouseup', (e) => {
+    if (isBackdropMouseDown && e.target === modalElement) {
+      modalElement.classList.remove('active');
+    }
+    isBackdropMouseDown = false;
+  });
+
+  const innerContent = modalElement.querySelector('.modal-content, .photo-viewer-content');
+  if (innerContent) {
+    innerContent.addEventListener('click', (e) => e.stopPropagation());
+    innerContent.addEventListener('mouseup', (e) => e.stopPropagation());
+  }
+}
+
 const inputShareLink = document.getElementById('input-share-link');
 const btnCopyDirect = document.getElementById('btn-copy-direct');
 
@@ -634,9 +657,7 @@ modalCancel.addEventListener('click', () => {
   customModal.classList.remove('active');
 });
 
-customModal.addEventListener('click', (e) => {
-  if (e.target === customModal) customModal.classList.remove('active');
-});
+bindBackdropClose(customModal);
 
 modalSave.addEventListener('click', () => {
   const u = inputUntuk.value.trim() || 'Kamu';
@@ -786,13 +807,7 @@ function initPolaroids() {
       photoViewerModal.classList.remove('active');
     });
   }
-  if (photoViewerModal) {
-    photoViewerModal.addEventListener('click', (e) => {
-      if (e.target === photoViewerModal) {
-        photoViewerModal.classList.remove('active');
-      }
-    });
-  }
+  bindBackdropClose(photoViewerModal);
 
   document.querySelectorAll('.polaroid-card').forEach((card) => {
     card.addEventListener('click', (e) => {
@@ -1147,11 +1162,7 @@ function initStickerModal() {
     });
   }
 
-  if (stickerModal) {
-    stickerModal.addEventListener('click', (e) => {
-      if (e.target === stickerModal) stickerModal.classList.remove('active');
-    });
-  }
+  bindBackdropClose(stickerModal);
 
   if (applyBtn) {
     applyBtn.addEventListener('click', () => {
