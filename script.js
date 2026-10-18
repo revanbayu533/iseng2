@@ -317,9 +317,30 @@ let typeSpeed = 38;
 let typeTimer = null;
 let isTypingDone = false;
 
+// Auto-scroll halus mengikuti posisi teks yang sedang diketik
+function autoScrollTyping() {
+  const rect = msgElement.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  // Jika baris terbawah mendekati atau melebihi batas bawah layar
+  if (rect.bottom > viewportHeight - 120) {
+    const scrollTarget = window.scrollY + (rect.bottom - viewportHeight + 150);
+    window.scrollTo({
+      top: scrollTarget,
+      behavior: 'smooth'
+    });
+  }
+}
+
 function typeWriter() {
   if (typeIndex < letterText.length) {
-    msgElement.textContent += letterText[typeIndex++];
+    const char = letterText[typeIndex++];
+    msgElement.textContent += char;
+
+    // Scroll otomatis saat ganti baris atau setiap beberapa karakter
+    if (char === '\n' || typeIndex % 10 === 0) {
+      autoScrollTyping();
+    }
+
     typeTimer = setTimeout(typeWriter, typeSpeed);
   } else {
     finishTyping();
@@ -337,6 +358,11 @@ function finishTyping() {
   const polaroidSection = document.getElementById('polaroid-section');
   if (polaroidSection) polaroidSection.style.display = 'block';
   askBox.style.display = 'block';
+
+  // Scroll otomatis menampilkan poin janji dan tombol maaf
+  setTimeout(() => {
+    reasonsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 350);
 }
 
 function startTyping() {
