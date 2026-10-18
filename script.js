@@ -293,7 +293,7 @@ Maaf ya kalau sekarang ada sikap, perkataan, atau caraku merespons yang kurang b
 
 Aku sadar banyak hal di masa lalu yang bikin kamu kecewa. Tapi satu hal yang pasti, pintu dan waktuku sekarang akan selalu terbuka buat kamu kapan pun kamu butuh atau sekadar pengen cerita.
 
-Sekarang, di saat waktuku sudah lebih luang dan aku ingin memperbaiki semuanya, aku paham kenapa situasinya justru berbalik. Aku sangat mengerti alasan kenapa kamu perlahan menjauh, bersikap dingin, atau bahkan mungkin terlihat seperti membenciku—terutama setelah ibumu tahu tentang hubungan kita. Aku tahu kamu pasti berada di posisi yang sangat sulit, serba salah, dan penuh tekanan di hadapan orang tuamu.
+Selama satu bulan belakangan ini, di tengah waktu luang yang aku punya, aku banyak menggunakan waktuku untuk merenung dan mencoba memposisikan diriku di posisimu agar bisa lebih mengerti keadaan. Aku paham betul kenapa belakangan ini kamu memilih untuk menjaga jarak dan bersikap berbeda, karena aku tahu persis posisi kamu saat ini pasti berada di situasi yang serba salah, penuh beban pikiran, dan jelas gak mudah untuk kamu lalui.
 
 Aku gak pernah ada niat sedikit pun untuk bikin beban pikiranmu makin berat. Terlepas dari apa pun yang terjadi dan bagaimana perasaanmu ke aku saat ini, aku benar-benar menghargai setiap keputusan dan batasan yang kamu ambil.
 
