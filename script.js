@@ -156,7 +156,7 @@ const romanticScale = [
 ];
 
 let noteIndex = 0;
-const bgAudio = document.getElementById('bg-music') || new Audio(encodeURI('JELITA.mp4'));
+const bgAudio = document.getElementById('bg-music') || new Audio(encodeURI('Bunga Maaf.mpeg'));
 const musicPill = document.getElementById('music-pill');
 const discVinyl = document.getElementById('disc-vinyl');
 const soundWave = document.getElementById('sound-wave');
@@ -178,7 +178,7 @@ function startMusic() {
   initAudio();
   isMusicPlaying = true;
   updateMusicUI(true);
-  showToast('Memutar: Jelita 🎵');
+  showToast('Memutar: Bunga Maaf 🎵');
 
   // Try playing the custom MP3 song
   const playPromise = bgAudio.play();
