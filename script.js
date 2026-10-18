@@ -43,7 +43,7 @@ function decodeSecret(encoded) {
 
 const params = new URLSearchParams(window.location.search);
 let untuk = params.get('untuk') || 'Jelita';
-let dari  = params.get('dari')  || 'Aku';
+let dari = params.get('dari') || 'Aku';
 
 // Ekstrak hadiah: prioritaskan parameter rahasia 'v' atau 'h', fallback ke 'hadiah'
 let hadiah = 'Traktir Makanan Favorit & Es Krim';
@@ -59,7 +59,7 @@ if (params.has('v')) {
     cleanUrl.searchParams.set('v', encodeSecret(hadiah));
     cleanUrl.searchParams.delete('hadiah');
     window.history.replaceState({}, '', cleanUrl.toString());
-  } catch (e) {}
+  } catch (e) { }
 }
 
 // Mode Penerima: Jika link memiliki parameter lock=1 atau untuk ditentukan (tanpa edit=1),
@@ -133,7 +133,7 @@ function playDodgeSound() {
     gain.connect(audioCtx.destination);
     osc.start();
     osc.stop(audioCtx.currentTime + 0.2);
-  } catch (e) {}
+  } catch (e) { }
 }
 
 // Sound effect: Celebration fanfare
@@ -295,9 +295,9 @@ Aku sadar banyak hal di masa lalu yang bikin kamu kecewa. Tapi satu hal yang pas
 
 Sebulan belakangan ini, aku banyak merenung dan belajar untuk lebih mengerti keadaanmu. Aku paham kenapa belakangan ini kamu memilih untuk menjaga jarak, dan aku benar-benar menghargai keputusanmu itu tanpa ada rasa kesal sedikit pun.
 
-Melihatmu terus berkembang dan berprestasi selama ini, jujur aku bangga banget, Jel. Pas tahu kamu ada lomba di Warkon kemarin, sebenarnya itu deket banget sama rumahku dan sempat ada rasa pengen datang buat dukung kamu. Tapi aku sadar untuk tetap menghargai batasanmu dan memilih mendoakan yang terbaik dari jauh agar kamu tetap fokus dan nyaman.
+Melihatmu terus berkembang dan berprestasi selama ini, jujur aku bangga banget, Jel. Pas tahu kamu ada lomba di Warkon kemarin, sebenarnya itu deket banget sama rumahku, dan dari situ aku cuma bisa mendoakan yang terbaik buat kamu, agar kamu bisa tampil maksimal dan tetap nyaman.
 
-Oh iya, untuk jersey kelasku nanti, sepertinya aku bakal tetap pakai nama inisialmu yaitu 'JLT' dan tanggal lahirmu untuk nomor punggungnya, yaitu 14.
+Oh iya, untuk jersey kelasku nanti, izinkan aku untuk pakai nama inisialmu yaitu 'JLT' dan tanggal lahirmu untuk nomor punggungnya, yaitu 14.
 
 Surat kecil ini bukan untuk menuntut apa-apa atau memaksakan keadaan kembali seperti dulu. Dari lubuk hatiku yang paling dalam, aku cuma pengen meminta maaf secara tulus agar gak ada ganjalan, beban, atau salah paham yang tersisa di antara kita.
 
@@ -788,7 +788,7 @@ function initPolaroids() {
     try {
       localStorage.setItem('apology_polaroid_captions', JSON.stringify(savedCaps));
       localStorage.setItem('apology_polaroid_photos', JSON.stringify(savedPhotos));
-    } catch (e) {}
+    } catch (e) { }
   }
 
   for (let i = 0; i < 3; i++) {
@@ -1218,7 +1218,7 @@ function initStickerModal() {
         try {
           localStorage.setItem('apology_custom_character_img', customCharacterImg);
           localStorage.setItem('apology_active_character', 'custom');
-        } catch(err) {}
+        } catch (err) { }
 
         setMainCharacterState('sad');
         stickerModal.classList.remove('active');
