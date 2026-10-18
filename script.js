@@ -729,7 +729,7 @@ const defaultPolaroids = [
   },
   {
     src: encodeURI('WhatsApp Image 2026-07-30 at 14.21.23 (1).jpeg'),
-    caption: 'mungkin ini foto yg aku punya'
+    caption: 'kalo kamu pikir foto kamu dah aku hapus. itu nggak jel'
   },
   {
     src: encodeURI('WhatsApp Image 2026-07-30 at 14.21.23 (2).jpeg'),
@@ -746,7 +746,7 @@ function initPolaroids() {
   const savedCaps = JSON.parse(localStorage.getItem('apology_polaroid_captions') || '{}');
 
   // Bersihkan cache lama SVG dummy atau caption default lama agar foto asli muncul
-  const oldDefaults = ['Momen Favorit Kita ✨', 'Jersey JLT • 14 🎽', 'Jangan Marahan Lagi Ya 🥺', 'Momen Manis Kita', 'Selalu berharga buat aku 🤍', 'Mungkin ini foto yang aku punya ✨'];
+  const oldDefaults = ['Momen Favorit Kita ✨', 'Jersey JLT • 14 🎽', 'Jangan Marahan Lagi Ya 🥺', 'Momen Manis Kita', 'Selalu berharga buat aku 🤍', 'Mungkin ini foto yang aku punya ✨', 'mungkin ini foto yg aku punya'];
   let modified = false;
   for (let i = 0; i < 3; i++) {
     if (savedCaps[i] && oldDefaults.includes(savedCaps[i])) {
