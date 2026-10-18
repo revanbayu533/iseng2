@@ -293,7 +293,7 @@ Maaf ya kalau sekarang ada sikap, perkataan, atau caraku merespons yang kurang b
 
 Aku sadar banyak hal di masa lalu yang bikin kamu kecewa. Tapi satu hal yang pasti, pintu dan waktuku sekarang akan selalu terbuka buat kamu kapan pun kamu butuh atau sekadar pengen cerita.
 
-Selama satu bulan belakangan ini, di tengah waktu luang yang aku punya, aku banyak menggunakan waktuku untuk merenung dan mencoba memposisikan diriku di posisimu agar bisa lebih mengerti keadaan. Aku paham betul kenapa belakangan ini kamu memilih untuk menjaga jarak dan bersikap berbeda, karena aku tahu persis posisi kamu saat ini pasti berada di situasi yang serba salah, penuh beban pikiran, dan jelas gak mudah untuk kamu lalui.
+Sebulan belakangan ini, aku banyak merenung dan mencoba memahami semuanya dari sudut pandangmu. Aku paham kenapa belakangan ini kamu memilih untuk menjaga jarak. Berada di posisimu sekarang pasti gak mudah—serba salah dan penuh beban pikiran.
 
 Melihatmu terus berkembang dan berprestasi selama ini, jujur aku bangga banget, Jel. Pas tahu kamu ada lomba di Warkon kemarin, sebenarnya itu deket banget sama rumahku dan sempat ada rasa pengen datang buat dukung kamu. Tapi aku sadar untuk tetap menghargai batasanmu dan memilih mendoakan yang terbaik dari jauh agar kamu tetap fokus dan nyaman.
 
