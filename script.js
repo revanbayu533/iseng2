@@ -1,10 +1,66 @@
 /* ========================================================
    1. PARAMETERS & INITIAL SETUP
    ======================================================== */
+// Encode / Decode obfuscated secret voucher to keep it a surprise in share links
+function encodeSecret(str) {
+  if (!str) return '';
+  try {
+    const bytes = new TextEncoder().encode(str);
+    const key = 42;
+    const masked = bytes.map(b => b ^ key);
+    let binary = '';
+    for (let i = 0; i < masked.length; i++) {
+      binary += String.fromCharCode(masked[i]);
+    }
+    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (e) {
+    return encodeURIComponent(str);
+  }
+}
+
+function decodeSecret(encoded) {
+  if (!encoded) return '';
+  try {
+    let base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
+    while (base64.length % 4) {
+      base64 += '=';
+    }
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    const key = 42;
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i) ^ key;
+    }
+    return new TextDecoder().decode(bytes);
+  } catch (e) {
+    try {
+      return decodeURIComponent(encoded);
+    } catch (err) {
+      return encoded;
+    }
+  }
+}
+
 const params = new URLSearchParams(window.location.search);
 let untuk = params.get('untuk') || 'Jelita';
 let dari  = params.get('dari')  || 'Aku';
-let hadiah = params.get('hadiah') || 'Traktir Makanan Favorit & Es Krim';
+
+// Ekstrak hadiah: prioritaskan parameter rahasia 'v' atau 'h', fallback ke 'hadiah'
+let hadiah = 'Traktir Makanan Favorit & Es Krim';
+if (params.has('v')) {
+  hadiah = decodeSecret(params.get('v')) || hadiah;
+} else if (params.has('h')) {
+  hadiah = decodeSecret(params.get('h')) || hadiah;
+} else if (params.has('hadiah')) {
+  hadiah = params.get('hadiah') || hadiah;
+  // Samarkan di address bar jika sebelumnya link plaintext dibuka
+  try {
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.set('v', encodeSecret(hadiah));
+    cleanUrl.searchParams.delete('hadiah');
+    window.history.replaceState({}, '', cleanUrl.toString());
+  } catch (e) {}
+}
 
 // Mode Penerima: Jika link memiliki parameter lock=1 atau untuk ditentukan (tanpa edit=1),
 // maka tombol ganti nama, tombol ganti stiker, dan fitur edit foto otomatis dikunci!
@@ -524,7 +580,9 @@ function getRecipientUrl() {
   const recipientUrl = new URL(window.location.href);
   recipientUrl.searchParams.set('untuk', u);
   recipientUrl.searchParams.set('dari', d);
-  recipientUrl.searchParams.set('hadiah', h);
+  recipientUrl.searchParams.set('v', encodeSecret(h));
+  recipientUrl.searchParams.delete('hadiah');
+  recipientUrl.searchParams.delete('h');
   recipientUrl.searchParams.set('lock', '1');
   recipientUrl.searchParams.delete('edit');
   return recipientUrl.toString();
@@ -533,6 +591,11 @@ function getRecipientUrl() {
 function updateShareLinkInput() {
   if (inputShareLink) {
     inputShareLink.value = getRecipientUrl();
+  }
+  const labelShareLink = document.getElementById('label-share-link');
+  if (labelShareLink) {
+    const u = (inputUntuk ? inputUntuk.value.trim() : '') || untuk;
+    labelShareLink.textContent = `Tautan Khusus ${u} (Rahasia & Terkunci 🔒):`;
   }
 }
 
@@ -544,16 +607,17 @@ if (btnCopyDirect) {
   btnCopyDirect.addEventListener('click', () => {
     updateShareLinkInput();
     const linkToCopy = inputShareLink.value;
+    const u = (inputUntuk ? inputUntuk.value.trim() : '') || untuk;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(linkToCopy).then(() => {
-        showToast('Link Read-Only tersalin! 🔒');
+        showToast(`Link tersalin! 🔒 Hadiah dirahasiakan untuk ${u}`);
       }).catch(() => {
         showToast('Gagal menyalin otomatis');
       });
     } else {
       inputShareLink.select();
       document.execCommand('copy');
-      showToast('Link Read-Only disalin! 🔒');
+      showToast(`Link tersalin! 🔒 Hadiah dirahasiakan untuk ${u}`);
     }
   });
 }
@@ -610,7 +674,9 @@ modalSave.addEventListener('click', () => {
   const currentUrl = new URL(window.location.href);
   currentUrl.searchParams.set('untuk', u);
   currentUrl.searchParams.set('dari', d);
-  currentUrl.searchParams.set('hadiah', h);
+  currentUrl.searchParams.set('v', encodeSecret(h));
+  currentUrl.searchParams.delete('hadiah');
+  currentUrl.searchParams.delete('h');
   currentUrl.searchParams.set('edit', '1'); // Tetap mode edit untuk si pengirim
   window.history.replaceState({}, '', currentUrl.toString());
 
@@ -621,7 +687,7 @@ modalSave.addEventListener('click', () => {
   // Copy link khusus penerima ke clipboard
   if (navigator.clipboard) {
     navigator.clipboard.writeText(recipientUrlString).then(() => {
-      showToast('Link tersalin! 🔒 Mode Read-Only untuk Jelita');
+      showToast(`Link tersalin! 🔒 Mode Rahasia untuk ${u}`);
     }).catch(() => {
       showToast('Pengaturan berhasil disimpan! ✨');
     });

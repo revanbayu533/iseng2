@@ -266,14 +266,14 @@
         <input type="text" id="input-hadiah" placeholder="Contoh: Traktir Seblak & Es Krim">
       </div>
       <div class="input-group" style="margin-top: 10px;">
-        <label for="input-share-link">Tautan Khusus Jelita (Read-Only & Terkunci):</label>
+        <label for="input-share-link" id="label-share-link">Tautan Khusus Jelita (Rahasia & Terkunci 🔒):</label>
         <div style="display: flex; gap: 8px; align-items: center;">
           <input type="text" id="input-share-link" readonly style="background: var(--bg-card); cursor: text; font-size: 0.82rem; font-family: monospace;">
           <button type="button" class="btn-save" id="btn-copy-direct" style="white-space: nowrap; padding: 10px 14px; font-size: 0.82rem;">Salin Link</button>
         </div>
       </div>
       <p style="font-size: 0.78rem; color: var(--text-muted); margin: 6px 0 10px;">
-        🔒 Link ini memiliki parameter <code>?lock=1</code> sehingga penerima tidak bisa mengubah nama, foto, atau teks.
+        🔒 Hadiah otomatis <strong>disamarkan (rahasia)</strong> di dalam tautan agar jadi kejutan saat penerima membuka vouchernya!
       </p>
       <div class="modal-actions">
         <button class="btn-cancel" id="modal-cancel">Tutup</button>
