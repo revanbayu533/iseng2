@@ -148,6 +148,14 @@
               <div class="polaroid-caption" id="polaroid-cap-2" contenteditable="true" spellcheck="false">mungkin ini foto yg aku punya</div>
             </div>
           </div>
+
+          <!-- Indikator Slide Foto untuk Layar HP -->
+          <div class="polaroid-dots" id="polaroid-dots">
+            <span class="polaroid-dot active" data-index="0" title="Foto 1"></span>
+            <span class="polaroid-dot" data-index="1" title="Foto 2"></span>
+            <span class="polaroid-dot" data-index="2" title="Foto 3"></span>
+          </div>
+
           <input type="file" id="polaroid-file-input" accept="image/*" style="display: none;">
         </div>
 
@@ -279,6 +287,15 @@
         <button class="btn-cancel" id="modal-cancel">Tutup</button>
         <button class="btn-save" id="modal-save">Simpan & Salin Link 🔒</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Lightbox / Viewer Foto Kenangan -->
+  <div class="modal-overlay" id="photo-viewer-modal">
+    <div class="photo-viewer-content">
+      <button type="button" class="photo-viewer-close" id="photo-viewer-close" aria-label="Tutup">&times;</button>
+      <img id="photo-viewer-img" src="" alt="Foto Kenangan Penuh">
+      <div id="photo-viewer-caption"></div>
     </div>
   </div>
 

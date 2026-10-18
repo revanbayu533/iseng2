@@ -768,16 +768,84 @@ function initPolaroids() {
     }
   }
 
-  // Click on polaroid card to upload photo (hanya untuk pengirim)
+  // Click on polaroid card
+  const photoViewerModal = document.getElementById('photo-viewer-modal');
+  const photoViewerImg = document.getElementById('photo-viewer-img');
+  const photoViewerCaption = document.getElementById('photo-viewer-caption');
+  const photoViewerClose = document.getElementById('photo-viewer-close');
+
+  function openPhotoViewer(src, caption) {
+    if (!photoViewerModal || !photoViewerImg) return;
+    photoViewerImg.src = src;
+    if (photoViewerCaption) photoViewerCaption.textContent = caption;
+    photoViewerModal.classList.add('active');
+  }
+
+  if (photoViewerClose) {
+    photoViewerClose.addEventListener('click', () => {
+      photoViewerModal.classList.remove('active');
+    });
+  }
+  if (photoViewerModal) {
+    photoViewerModal.addEventListener('click', (e) => {
+      if (e.target === photoViewerModal) {
+        photoViewerModal.classList.remove('active');
+      }
+    });
+  }
+
   document.querySelectorAll('.polaroid-card').forEach((card) => {
     card.addEventListener('click', (e) => {
-      if (isLocked) return;
-      // If user clicked the caption to edit, don't trigger upload
+      const idx = parseInt(card.dataset.index, 10);
+      const img = card.querySelector('.polaroid-img');
+      const cap = card.querySelector('.polaroid-caption');
+
+      if (isLocked) {
+        // Mode Penerima: Buka photo viewer resolusi penuh
+        if (img) openPhotoViewer(img.src, cap ? cap.textContent : '');
+        return;
+      }
+
+      // Mode Pengirim: Klik caption untuk edit teks, klik gambar untuk ganti foto
       if (e.target.classList.contains('polaroid-caption')) return;
-      targetPhotoIndex = parseInt(card.dataset.index, 10);
+      targetPhotoIndex = idx;
       polaroidFileInput.click();
     });
   });
+
+  // Mobile scroll tracking for dots
+  const polaroidTrack = document.getElementById('polaroid-track');
+  const polaroidDots = document.querySelectorAll('.polaroid-dot');
+
+  if (polaroidTrack && polaroidDots.length > 0) {
+    polaroidTrack.addEventListener('scroll', () => {
+      const trackCenter = polaroidTrack.scrollLeft + polaroidTrack.clientWidth / 2;
+      const cards = polaroidTrack.querySelectorAll('.polaroid-card');
+      let closestIdx = 0;
+      let minDiff = Infinity;
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const diff = Math.abs(trackCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      polaroidDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === closestIdx);
+      });
+    }, { passive: true });
+
+    polaroidDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.index, 10);
+        const cards = polaroidTrack.querySelectorAll('.polaroid-card');
+        if (cards[idx]) {
+          cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    });
+  }
 
   if (uploadPolaroidBtn) {
     uploadPolaroidBtn.addEventListener('click', () => {
